@@ -26,16 +26,8 @@ public class LocationServiceTest {
     }
 
     @BeforeEach
-    void cleanTable() {
-        try (Session session = sessionFactory.openSession()) {
-            var tx = session.beginTransaction();
-            // Must delete User first — it has a foreign key (village_id)
-            // pointing at Location. Any test class touching Location needs
-            // this same ordering if User rows might also be present.
-            session.createMutationQuery("delete from User").executeUpdate();
-            session.createMutationQuery("delete from Location").executeUpdate();
-            tx.commit();
-        }
+    void cleanTables() {
+        TestCleaner.cleanAll(sessionFactory);
     }
 
     @AfterAll
