@@ -31,15 +31,7 @@ public class UserServiceTest {
 
     @BeforeEach
     void cleanTables() {
-        // User must be deleted before Location, since User has a foreign
-        // key (village_id) pointing at Location — deleting Location first
-        // would violate that constraint.
-        try (Session session = sessionFactory.openSession()) {
-            var tx = session.beginTransaction();
-            session.createMutationQuery("delete from User").executeUpdate();
-            session.createMutationQuery("delete from Location").executeUpdate();
-            tx.commit();
-        }
+        TestCleaner.cleanAll(sessionFactory);
     }
 
     @AfterAll
