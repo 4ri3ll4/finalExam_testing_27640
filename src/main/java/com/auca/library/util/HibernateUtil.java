@@ -8,6 +8,7 @@ import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 
 import com.auca.library.domain.Location;
+import com.auca.library.domain.User;
 
 public class HibernateUtil {
 
@@ -25,8 +26,10 @@ public class HibernateUtil {
             return new Configuration()
                     .addProperties(properties)
                     .addAnnotatedClass(Location.class)
+                    .addAnnotatedClass(User.class)
                     // more .addAnnotatedClass(...) lines get added here as we
-                    // build each new entity — User, Borrower, Book, etc.
+                    // build each new entity — Borrower, Book, Shelf, Room,
+                    // Membership, MembershipType
                     .buildSessionFactory();
 
         } catch (IOException e) {
