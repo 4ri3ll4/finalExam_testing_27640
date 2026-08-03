@@ -30,10 +30,10 @@ No UI — this project is validated entirely through JUnit test cases that inser
 - [x] Project scaffolding, `pom.xml`, database created
 - [x] Hibernate + PostgreSQL connection working
 - [x] Requirement 1: `Location` entity with self-referencing hierarchy (Province → District → Sector → Cell → Village)
-- [ ] Requirement 2: village → province lookup
-- [ ] Requirement 3: person → province lookup
-- [ ] Requirement 4: user authentication
-- [ ] Requirement 5: membership registration
+- [x] Requirement 2: village → province lookup
+- [x] Requirement 3: person → province lookup
+- [x] Requirement 4: user authentication
+- [x] Requirement 5: membership registration
 - [ ] Requirement 6: borrowing a book
 - [ ] Requirement 7: borrow limit validation
 - [ ] Requirement 8: assign book to shelf
