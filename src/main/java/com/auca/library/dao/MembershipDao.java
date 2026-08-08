@@ -44,4 +44,17 @@ public class MembershipDao {
                     .uniqueResult();
         }
     }
+
+    // Specifically APPROVED only — used by borrow-limit validation, since a
+    // PENDING or REJECTED membership should not allow borrowing.
+    public Membership findApprovedMembershipByReaderId(UUID readerId) {
+        try (Session session = sessionFactory.openSession()) {
+            return session.createQuery(
+                    "from Membership m where m.reader.personId = :readerId and m.membershipStatus = :status",
+                    Membership.class)
+                    .setParameter("readerId", readerId)
+                    .setParameter("status", Status.APPROVED)
+                    .uniqueResult();
+        }
+    }
 }
