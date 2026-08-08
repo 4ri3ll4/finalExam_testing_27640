@@ -7,9 +7,13 @@ import java.util.Properties;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 
+import com.auca.library.domain.Book;
+import com.auca.library.domain.Borrower;
 import com.auca.library.domain.Location;
 import com.auca.library.domain.Membership;
 import com.auca.library.domain.MembershipType;
+import com.auca.library.domain.Room;
+import com.auca.library.domain.Shelf;
 import com.auca.library.domain.User;
 
 public class HibernateUtil {
@@ -31,9 +35,10 @@ public class HibernateUtil {
                     .addAnnotatedClass(User.class)
                     .addAnnotatedClass(MembershipType.class)
                     .addAnnotatedClass(Membership.class)
-                    // more .addAnnotatedClass(...) lines get added here as we
-                    // build each new entity — Borrower, Book, Shelf, Room,
-                    // Membership, MembershipType
+                    .addAnnotatedClass(Room.class)
+                    .addAnnotatedClass(Shelf.class)
+                    .addAnnotatedClass(Book.class)
+                    .addAnnotatedClass(Borrower.class)
                     .buildSessionFactory();
 
         } catch (IOException e) {
